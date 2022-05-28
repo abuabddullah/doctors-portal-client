@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading/Loading';
 
 const AllUsers = () => {
-    const { isLoading, error, data: users, refetch } = useQuery(['allUsers'], () => fetch('https://bddoctorsportal.herokuapp.com/allUsers', {
+    const { isLoading, error, data: users, refetch } = useQuery(['allUsers'], () => fetch('http://localhost:5000/allUsers', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ const AllUsers = () => {
 
     const handleAdmin = (email4Admin) => {
         // console.log(email4Admin);
-        const url = `https://bddoctorsportal.herokuapp.com/admin/${email4Admin}`;
+        const url = `http://localhost:5000/admin/${email4Admin}`;
         fetch(url, {
             method: 'PUT',
             headers: {

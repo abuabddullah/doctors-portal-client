@@ -9,7 +9,7 @@ const useAdmin = (user) => {
         if (email) {
             const testAdmin = async () => {
                 try {
-                    const { data } = await axios.get(`https://bddoctorsportal.herokuapp.com/admin/${email}`);
+                    const { data } = await axios.get(`http://localhost:5000/admin/${email}`);
                     // console.log(data);
                     setAdmin(data.admin);
                     setAdminLoading(false);

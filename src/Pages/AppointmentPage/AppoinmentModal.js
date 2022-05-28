@@ -32,7 +32,7 @@ const AppoinmentModal = ({ treatment, setTreatment, date, refetch }) => {
 
 
         const postBooking = async () => {
-            const url = 'https://bddoctorsportal.herokuapp.com/bookings';
+            const url = 'http://localhost:5000/bookings';
             try {
                 const { data } = await axios.post(url, bookingInfo);
                 if (data.error) {
@@ -103,7 +103,7 @@ const AppoinmentModal = ({ treatment, setTreatment, date, refetch }) => {
                         <input
                             type="text"
                             name="userName"
-                            value={user.displayName}
+                            value={user?.displayName}
                             readOnly
                             disabled
                             placeholder="Type Your Name"
@@ -120,7 +120,7 @@ const AppoinmentModal = ({ treatment, setTreatment, date, refetch }) => {
                         <input
                             type="email"
                             name="email"
-                            value={user.email}
+                            value={user?.email}
                             readOnly
                             disabled
                             placeholder="Type Your email"

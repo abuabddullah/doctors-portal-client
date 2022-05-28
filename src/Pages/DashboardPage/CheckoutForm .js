@@ -16,7 +16,7 @@ const CheckoutForm = ({ appointedTreatment }) => {
     const [clientSecret, setClientSecret] = useState("");
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://bddoctorsportal.herokuapp.com/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
@@ -82,7 +82,7 @@ const CheckoutForm = ({ appointedTreatment }) => {
                 appointment: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://bddoctorsportal.herokuapp.com/booking/${_id}`, {
+            fetch(`http://localhost:5000/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

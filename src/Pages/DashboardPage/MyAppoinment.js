@@ -14,7 +14,7 @@ const MyAppoinment = () => {
 
     // Normal JWT less fetch
     // const { isLoading, error, data: apponintments, refetch } = useQuery(['availableServices'], () =>
-    //     fetch(`https://bddoctorsportal.herokuapp.com/apponintments?email=${user?.email}`)
+    //     fetch(`http://localhost:5000/apponintments?email=${user?.email}`)
     //         .then(res =>
     //             res.json()
     //         )
@@ -28,7 +28,7 @@ const MyAppoinment = () => {
 
     // //get data with JWT  fetch
     // const { isLoading, error, data: apponintments, refetch } = useQuery(['availableServices', user], () =>
-    //     fetch(`https://bddoctorsportal.herokuapp.com/apponintments?email=${user?.email}`, {
+    //     fetch(`http://localhost:5000/apponintments?email=${user?.email}`, {
     //         method: 'GET',
     //         headers: {
     //             'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const MyAppoinment = () => {
     useEffect(() => {
         const getAppoinments = async () => {
             const email = user?.email;
-            const url = `https://bddoctorsportal.herokuapp.com/apponintments?email=${email}`;
+            const url = `http://localhost:5000/apponintments?email=${email}`;
             try {
                 const { data } = await axios.get(url, {
                     headers: {
@@ -71,7 +71,7 @@ const MyAppoinment = () => {
             }
         }
         getAppoinments();
-    }, [user, apponintments])
+    }, [user, apponintments,navigate])
 
     return (
         <section>

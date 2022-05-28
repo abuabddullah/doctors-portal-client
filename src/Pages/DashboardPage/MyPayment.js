@@ -14,7 +14,7 @@ const stripePromise = loadStripe('pk_test_51L0mz8C4IDVrgcznLbqLXXayVFuiBQhNv7ouT
 const MyPayment = () => {
     const { _id } = useParams()
     const { isLoading, error, data: appointedTreatment, refetch } = useQuery(['apponintment', _id], () =>
-        fetch(`https://bddoctorsportal.herokuapp.com/apponintment/${_id}`, {
+        fetch(`http://localhost:5000/apponintment/${_id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
