@@ -3,7 +3,7 @@
 //     const email = user?.user?.email;
 //     const currentUser = {email: email};
 //     if(email){
-//         fetch(`http://localhost:5000/login/${email}`, {
+//         fetch(`https://bddoctorsportal.herokuapp.com/login/${email}`, {
 //             method:'PUT',
 //             headers: {
 //                 'content-type': 'application/json'
@@ -29,7 +29,7 @@ import axios from "axios";
 const getAccessToken = async (user) => {
     const email = user?.user?.email;
     const currentUser = { email: email };
-    const url = `http://localhost:5000/login/${email}`;
+    const url = `https://bddoctorsportal.herokuapp.com/login/${email}`;
 
     if (email) {
         const { data } = await axios.put(url, currentUser);

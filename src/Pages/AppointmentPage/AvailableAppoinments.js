@@ -16,7 +16,7 @@ const AvailableAppoinments = ({ date }) => {
     // // GET all services
     // useEffect(() => {
     //     const getServices = async () => {
-    //         const url = `http://localhost:5000/services`;
+    //         const url = `https://bddoctorsportal.herokuapp.com/services`;
     //         try {
     //             const { data } = await axios.get(url);
     //             // console.log(data);
@@ -32,7 +32,7 @@ const AvailableAppoinments = ({ date }) => {
     // // GET all availble non booked services
     // useEffect(() => {
     //     const getServices = async () => {
-    //         const url = `http://localhost:5000/availableServices?date=${formatDate}`;
+    //         const url = `https://bddoctorsportal.herokuapp.com/availableServices?date=${formatDate}`;
     //         try {
     //             const { data } = await axios.get(url);
     //             // console.log(data);
@@ -46,7 +46,7 @@ const AvailableAppoinments = ({ date }) => {
 
     // GET all availble non booked services by useQuery
     const { isLoading, error, data: services, refetch } = useQuery(['availableServices', formatDate], () =>
-        fetch(`http://localhost:5000/availableServices?date=${formatDate}`)
+        fetch(`https://bddoctorsportal.herokuapp.com/availableServices?date=${formatDate}`)
             .then(res =>
                 res.json()
             )
