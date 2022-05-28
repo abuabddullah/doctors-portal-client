@@ -9,14 +9,13 @@ import Testimonials from './Testimonials';
 
 const Home = () => {
     return (
-        <div className='px-12'>
+        <div className=' lg:px-12'>
             <Banner></Banner>
             <Info></Info>
             <Services></Services>
             <MakeAppointment></MakeAppointment>
             <Testimonials></Testimonials>
             <Contact></Contact>
-            <Footer></Footer>
         </div>
     );
 };

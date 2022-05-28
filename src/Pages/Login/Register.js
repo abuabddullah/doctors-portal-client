@@ -1,31 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GoogleSignIn from '../Shared/GoogleSignIn';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import Loading from '../Shared/Loading/Loading';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Loading from './../Shared/Loading/Loading'
 import getAccessToken from '../utilities/getAccessToken';
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate()
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    const [regError, setRegError] = useState('');
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-        // console.log(data);
         const name = data.name;
         const email = data.email;
         const password = data.password;
-        signInWithEmailAndPassword(email, password)
+        createUserWithEmailAndPassword(email, password, { sendEmailVerification: true })
     }
+
+    // if (error) {
+    //     setRegError(error?.message)
+    // } 
 
     if (loading) {
         return <Loading />
@@ -40,11 +44,32 @@ const Login = () => {
                 <div className="card mx-auto md:w-3/4 lg:w-1/2  shadow-xl">
                     <div className="card-body">
                         <div className="text-center lg:text-left">
-                            <h1 className="text-3xl font-bold">Login now!</h1>
+                            <h1 className="text-3xl font-bold">Register now!</h1>
                         </div>
 
 
                         <form onSubmit={handleSubmit(onSubmit)}>
+
+                            <div className="form-control mx-auto w-full max-w-xs">
+                                <label htmlFor='name' className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input
+                                    id='name'
+                                    type="text"
+                                    placeholder="Type name"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("name", {
+                                        maxLength: {
+                                            value: 15,
+                                            message: 'type nickname only less than 16 char'
+                                        }
+                                    })}
+                                />
+                                <label className="label">
+                                    {errors.name?.type === 'maxLength' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                </label>
+                            </div>
 
                             <div className="form-control mx-auto w-full max-w-xs">
                                 <label htmlFor='email' className="label">
@@ -107,16 +132,11 @@ const Login = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-wide btn-outline">
-                                    Login
+                                    Register
                                 </button>
                             </div>
                         </form>
-
-                        <p className="text-center">New to Doctors Portal? <Link className='text-secondary' to="/register">Create New Account</Link></p>
-
-                        <p className="text-center">
-                            <span 
-                            className='text-secondary cursor-pointer'>Forgot Password?</span></p>
+                        <p className="text-center">Already have accaount? <Link className='text-secondary' to="/login">Login now</Link></p>
 
                         <div className="divider">OR</div>
 
@@ -128,4 +148,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+.homeBanner {
+  background: url("https://i.ibb.co/8683H0m/bg.png") no-repeat fixed;
+  background-size: cover;
+  /* height: 100vh; */
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-blend-mode: soft-light;
+ }
