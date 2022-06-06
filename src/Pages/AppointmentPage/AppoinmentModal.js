@@ -32,7 +32,7 @@ const AppoinmentModal = ({ treatment, setTreatment, date, refetch }) => {
 
 
         const postBooking = async () => {
-            const url = 'http://localhost:5000/bookings';
+            const url = 'https://bddoctorsportal.herokuapp.com/bookings';
             try {
                 const { data } = await axios.post(url, bookingInfo);
                 if (data.error) {

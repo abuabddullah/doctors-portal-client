@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading/Loading';
 import DeleteDoctor from './DeleteDoctor';
 
 const AllDoctors = () => {
-    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/doctors', {
+    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('https://bddoctorsportal.herokuapp.com/doctors', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

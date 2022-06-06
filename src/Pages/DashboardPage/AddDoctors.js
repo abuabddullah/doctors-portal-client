@@ -49,7 +49,7 @@ const AddDoctors = () => {
                     }
                     // console.log(doctorInfo);
                     // step-3: create or post doctor in db
-                    fetch('http://localhost:5000/doctors', {
+                    fetch('https://bddoctorsportal.herokuapp.com/doctors', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

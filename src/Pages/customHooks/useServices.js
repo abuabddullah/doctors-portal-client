@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 
 const useServices = () => {
     const { isLoading, error, data, refetch } = useQuery(['availableServices', ], () =>
-        fetch(`http://localhost:5000/services`)
+        fetch(`https://bddoctorsportal.herokuapp.com/services`)
             .then(res =>
                 res.json()
             )
